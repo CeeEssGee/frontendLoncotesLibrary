@@ -24,8 +24,8 @@ export default function PatronList() {
                         <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Address</th>
-                        <th>Email</th>
+                        {/* <th>Address</th>
+                        <th>Email</th> */}
                         <th>Is Active</th>
                         <th></th>
                     </tr>
@@ -36,8 +36,8 @@ export default function PatronList() {
                             <th scope="row">{p.id}</th>
                             <td>{p?.firstName}</td>
                             <td>{p?.lastName}</td>
-                            <td>{p?.address}</td>
-                            <td>{p?.email}</td>
+                            {/* <td>{p?.address}</td>
+                            <td>{p?.email}</td> */}
                             <td>{p?.isActive.toString()}</td>
                             <td>
                                 <Link to={`${p.id}`}>Details</Link>
