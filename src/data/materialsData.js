@@ -16,3 +16,12 @@ export const createMaterial = (material) => {
     body: JSON.stringify(material),
   }).then((res) => res.json());
 };
+
+export const removeMaterial = (id) => {
+  return fetch(`${_apiUrl}/outofcirc/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+};
