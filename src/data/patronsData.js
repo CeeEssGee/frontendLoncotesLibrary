@@ -25,4 +25,4 @@ export const deactivatePatron = (id) => {
             "Content-Type": "application/json"
         },
     });
-}
+};
