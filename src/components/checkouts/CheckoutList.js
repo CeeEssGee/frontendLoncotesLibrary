@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getCheckouts } from "../../data/checkoutsData";
+import { getCheckouts, returnCheckouts } from "../../data/checkoutsData";
 import { Button, Table } from "reactstrap";
 
 
@@ -10,7 +10,13 @@ export default function CheckoutList() {
         getCheckouts().then(setCheckouts);
     }, []);
 
-    const handleReturn = () => {
+    const getAllCheckouts = () => {
+        getCheckouts().then(setCheckouts)
+    };
+
+    const handleReturn = (e) => {
+        returnCheckouts(e.target.value)
+        getAllCheckouts();
     };
 
     return (
@@ -38,16 +44,16 @@ export default function CheckoutList() {
 
                             {c.returnDate ? (
                                 <td>
-
-                                    {/* <Button
-                                        color='primary'
-                                        value={c.id}
-                                        onClick={handleReturn}
-                                    >Return</Button> */}
+                                    {c?.returnDate.split("T")[0]}
                                 </td>
                             ) : (
                                 <td>
-                                    {c?.returnDate}
+
+                                    <Button
+                                        color='primary'
+                                        value={c.id}
+                                        onClick={handleReturn}
+                                    >Return</Button>
                                 </td>
                             )}
 
