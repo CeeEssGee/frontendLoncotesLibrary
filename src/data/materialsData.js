@@ -25,3 +25,7 @@ export const removeMaterial = (id) => {
     },
   });
 };
+
+export const getAvailableMaterials = () => {
+  return fetch(`${_apiUrl}/available`).then((r) => r.json());
+};
