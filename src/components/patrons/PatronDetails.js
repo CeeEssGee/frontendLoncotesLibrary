@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
-import { Table } from "reactstrap";
+import { Link, useParams } from "react-router-dom"
+import { Button, Table } from "reactstrap";
 import { getPatron } from "../../data/patronsData";
+import PatronEdit from "./PatronEdit";
 
 
 export default function PatronDetails() {
@@ -20,6 +21,7 @@ export default function PatronDetails() {
     return (
         <div className="container">
             <h2>{patron.firstName} {patron.lastName}</h2>
+            <Link to={`/patrons/update/${patron.id}`}><Button>Edit Patron</Button></Link>
             <Table>
                 <tbody>
                     <tr>

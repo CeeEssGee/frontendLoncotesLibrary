@@ -9,6 +9,7 @@ import MaterialDetails from "./components/materials/MaterialDetails";
 import CreateMaterial from "./components/materials/CreateMaterial";
 import PatronList from "./components/patrons/PatronList";
 import PatronDetails from "./components/patrons/PatronDetails";
+import PatronEdit from "./components/patrons/PatronEdit";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -24,6 +25,7 @@ root.render(
         <Route path="patrons">
           <Route index element={<PatronList />} />
           <Route path=":id" element={<PatronDetails />} />
+          <Route path="update/:id" element={<PatronEdit />} />
         </Route>
       </Route>
     </Routes>
