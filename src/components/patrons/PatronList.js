@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import { getPatrons } from "../../data/patronsData";
+import { deactivatePatron, getPatrons } from "../../data/patronsData";
 import { Link } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 
@@ -11,6 +11,15 @@ export default function PatronList() {
     useEffect(() => {
         getPatrons().then(setPatrons);
     }, []);
+
+    const getAllPatrons = () => {
+        getPatrons().then(setPatrons)
+    };
+
+    const handleDeactivate = (e) => {
+        deactivatePatron(e.target.value)
+        getAllPatrons();
+    };
 
     return (
         <div className="container">
@@ -24,8 +33,6 @@ export default function PatronList() {
                         <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        {/* <th>Address</th>
-                        <th>Email</th> */}
                         <th>Is Active</th>
                         <th></th>
                     </tr>
@@ -37,6 +44,23 @@ export default function PatronList() {
                             <td>{p?.firstName}</td>
                             <td>{p?.lastName}</td>
                             <td>{p?.isActive.toString()}</td>
+
+                            {p.isActive ? (
+                                <td>
+
+                                    <Button
+                                        color='danger'
+                                        value={p.id}
+                                        onClick={handleDeactivate}
+                                    >Deactivate</Button>
+                                </td>
+                            ) : (
+                                <td>
+
+                                </td>
+                            )}
+
+
                             <td>
                                 <Link to={`${p.id}`}>Details</Link>
                             </td>

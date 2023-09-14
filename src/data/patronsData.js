@@ -17,3 +17,12 @@ export const updatePatron = (patron) => {
         body: JSON.stringify(patron),
     });
 };
+
+export const deactivatePatron = (id) => {
+    return fetch(`${_apiUrl}/deactivate/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+}
