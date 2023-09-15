@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import { deactivatePatron, getPatrons } from "../../data/patronsData";
+import { activatePatron, deactivatePatron, getPatrons } from "../../data/patronsData";
 import { Link } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 
@@ -18,6 +18,11 @@ export default function PatronList() {
 
     const handleDeactivate = (e) => {
         deactivatePatron(e.target.value)
+        getAllPatrons();
+    };
+
+    const handleActivate = (e) => {
+        activatePatron(e.target.value)
         getAllPatrons();
     };
 
@@ -57,6 +62,20 @@ export default function PatronList() {
                             ) : (
                                 <td>
 
+                                </td>
+                            )}
+
+                            {p.isActive ? (
+                                <td>
+
+                                </td>
+                            ) : (
+                                <td>
+                                    <Button
+                                        color='secondary'
+                                        value={p.id}
+                                        onClick={handleActivate}
+                                    >Activate</Button>
                                 </td>
                             )}
 

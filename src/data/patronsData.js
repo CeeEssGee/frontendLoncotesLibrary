@@ -26,3 +26,12 @@ export const deactivatePatron = (id) => {
         },
     });
 };
+
+export const activatePatron = (id) => {
+    return fetch(`${_apiUrl}/activate/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    });
+};
